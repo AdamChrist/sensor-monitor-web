@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: sensor-monitor-web:latest
+          tags: adamchrist/sensor-monitor-web:latest
