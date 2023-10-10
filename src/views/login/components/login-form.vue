@@ -79,12 +79,19 @@
   const userStore = useUserStore();
 
   const appName = import.meta.env.VITE_APP_NAME;
+  const mode = import.meta.env.MODE;
 
-  const loginConfig = useStorage('login-config', {
-    rememberPassword: true,
-    userName: 'admin', // 演示默认值
-    pwd: 'sd#2023',
-  });
+  const loginConfig = useStorage(
+    'login-config',
+    mode === 'development'
+      ? {
+          rememberPassword: true,
+          userName: 'admin', // 演示默认值
+          pwd: 'sd#2023',
+        }
+      : {}
+  );
+
   const userInfo = reactive({
     userName: loginConfig.value.userName,
     pwd: loginConfig.value.pwd,
